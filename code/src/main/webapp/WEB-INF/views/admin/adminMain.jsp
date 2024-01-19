@@ -80,7 +80,7 @@
 				</a>
 					<ul class="nav nav-second-level">
 						<li><a href="">- 상품목록/수정</a></li>
-						<li><a href="">- 상품등록</a></li>
+						<li><a href="goodsWrite.do">- 상품등록</a></li>
 						<li><a href="">- 할인 적용</a></li>
 					</ul></li>
 
@@ -89,7 +89,7 @@
 						<b class="fa fa-dashboard fa-fw">주문배송관리</b> 
 				</a></li>
 
-				<li><a href="#"
+				<li><a href="/member_admin.do"
 					style="background: #e7e7e7; border-bottom: 1px solid #F8F8F8;">
 						<b class="fa fa-dashboard fa-fw">회원관리</b> 
 				</a></li>
@@ -99,7 +99,7 @@
 						<b class="fa fa-dashboard fa-fw">매출확인</b> 
 				</a></li>
 
-				<li><a href="/adminAslist.do"
+				<li><a href="/as_admin.do"
 					style="background: #e7e7e7; border-bottom: 1px solid #F8F8F8;">
 						<b class="fa fa-dashboard fa-fw">교환/환불/AS</b> 
 				</a></li>
