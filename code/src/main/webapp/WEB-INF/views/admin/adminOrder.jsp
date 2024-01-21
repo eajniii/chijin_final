@@ -16,7 +16,7 @@
 <!-- 부트스트랩 -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom styles for this template -->
-<link href="css/dashboard.css" rel="stylesheet">
+<link href="css/ui.css" rel="stylesheet">
 <!-- Custom styles for this template -->
 <link href="css/justified-nav.css" rel="stylesheet">
 <script src="http://code.jquery.com/jquery-3.5.1.js"></script>

@@ -10,52 +10,67 @@
 	<!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
 	<title>adminSide</title>
 
-	<!-- 부트스트랩 -->
-	<!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
-
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="https://kit.fontawesome.com/db619109b0.js" crossorigin="anonymous"></script>
+<style>
+.sidebar{
+	width: 300px; 
+	height: 1000px; 
+	top:130px; 
+	align:left;
+	background-color:#f5f5f5;
+}
+.adminpage-top{
+	width: 100%;
+	height: 130px;
+	background-color: #a4a4b0;
+	text-align: center;
+	margin-top: 10px;
+}
+#side-menu>li>a{
+	width:200px;
+}
+</style>
 </head>
 <body>
 
 <!-- /.navbar-header -->
-<div class="navbar-default sidebar" role="navigation" style="width: 230px;">
-	<div style="width: 180px;height: 130px;background-color: #a4a4b0;text-align: center;">
+<div class="navbar-default sidebar" role="navigation">
+	<div class="adminpage-top">
 		<br />
 		<h2><img src="/img/ad.png" style="width : 100%"></h2>
 		<%--		<h2>관리자</h2>--%>
 		<%--		<p>Admin</p>--%>
 	</div>
-	<div style="width: 180px; height: 80px; background-color: #F8F8F8;">
-		<br />
-		<p style="text-align: center;"><a href="#">로그아웃</a>하시겠습니까</p>
-	</div>
-	<div class="sidebar-nav navbar-collapse" style="width:180px;">
+	
+	<div class="sidebar-nav navbar-collapse" >
 		<ul class="nav" id="side-menu">
 			<%--				<li><a href="javascript:pingTest()"--%>
 			<%--					   style="background: #e7e7e7; border-bottom: 1px solid #F8F8F8;">--%>
-			<%--					<b class="fa fa-dashboard fa-fw">서버관리</b> --%>
+			<%--					<b class="fa fa-dashboard">서버관리</b> --%>
 			<%--				</a></li>--%>
 
 			<li><a href="/checkPing.do" style="background: #e7e7e7; border-bottom: 1px solid #F8F8F8;">
-				<b class="fa fa-dashboard fa-fw">서버관리</b> ⚙️
+				<b class="fa fa-dashboard">서버관리</b> ⚙️
 			</a></li>
 
 			<li><a href="/main.do" style="background: #e7e7e7; border-bottom: 1px solid #F8F8F8;">
-				<b class="fa fa-dashboard fa-fw">쇼핑몰로 이동</b>
+				<b class="fa fa-dashboard">쇼핑몰로 이동</b>
 			</a></li>
 
 			<li><a href="/order_admin_a.do"
 				   style="background: #e7e7e7; border-bottom: 1px solid #F8F8F8;">
-				<b class="fa fa-dashboard fa-fw">주문배송관리</b>
+				<b class="fa fa-dashboard">주문배송관리</b>
 			</a></li>
 
 			<li><a href="/as_admin.do" style="background: #e7e7e7; border-bottom: 1px solid #F8F8F8;">
-				<b class="fa fa-dashboard fa-fw">교환/환불/AS</b>
+				<b class="fa fa-dashboard">교환/환불/AS</b>
 			</a></li>
 
 			<!-- <li class="active"> 포지션 -->
 
 			<li><a href="#" style="background: #e7e7e7;">
-				<b class="fa fa-bar-chart-o fa-fw">상품관리</b> <span class="fa arrow">▼</span>
+				<b class="fa fa-bar-chart-o">상품관리</b> <span class="fa arrow">▼</span>
 			</a>
 				<ul class="nav nav-second-level">
 					<li><a href="">- 상품목록/수정</a></li>
@@ -66,11 +81,11 @@
 
 			<li><a href="/member_admin.do"
 				   style="background: #e7e7e7; border-bottom: 1px solid #F8F8F8;">
-				<b class="fa fa-dashboard fa-fw">회원관리</b>
+				<b class="fa fa-dashboard">회원관리</b>
 			</a></li>
 
 			<li class="active"><a href="#" style="background: #e7e7e7;">
-				<b class="fa fa-bar-chart-o fa-fw">게시판관리</b> <span class="fa arrow">▼</span>
+				<b class="fa fa-bar-chart-o">게시판관리</b> <span class="fa arrow">▼</span>
 			</a>
 				<ul class="nav nav-second-level">
 					<li><a href="/notice/openNoticeList.do">- 공지사항</a></li>
@@ -81,7 +96,7 @@
 			<!-- s 쿠폰 추가 2020.06.25 -->
 			<li class="active">
 				<a href="#" style="background: #e7e7e7;">
-					<b class="fa fa-bar-chart-o fa-fw">쿠폰관리</b> <span class="fa arrow">▼</span>
+					<b class="fa fa-bar-chart-o">쿠폰관리</b> <span class="fa arrow">▼</span>
 				</a>
 				<ul class="nav nav-second-level">
 					<li><a href="/adminCouponList.do">- 쿠폰목록/수정</a></li>
@@ -93,7 +108,7 @@
 			<!-- s 이벤트 추가 2020.06.30 -->
 			<li class="active">
 				<a href="#" style="background: #e7e7e7;">
-					<b class="fa fa-bar-chart-o fa-fw">이벤트관리</b> <span class="fa arrow">▼</span>
+					<b class="fa fa-bar-chart-o">이벤트관리</b> <span class="fa arrow">▼</span>
 				</a>
 				<ul class="nav nav-second-level">
 					<li><a href="/adminEventList.do">- 이벤트목록/수정</a></li>
@@ -103,7 +118,7 @@
 			<!-- e 이벤트 추가 2020.06.30 -->
 			<%--				<li><a href="/serverCheck.do"--%>
 			<%--					   style="background: #e7e7e7; border-bottom: 1px solid #F8F8F8;">--%>
-			<%--					<b class="fa fa-dashboard fa-fw">서버관리</b> --%>
+			<%--					<b class="fa fa-dashboard">서버관리</b> --%>
 			<%--				</a></li>--%>
 
 
@@ -127,5 +142,7 @@
 		window.open(url, name, option);
 	}
 </script>
+<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </body>
 </html>

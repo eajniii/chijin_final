@@ -10,7 +10,7 @@ audio, canvas, progress, video {
 
 audio:not ([controls] ){
 	display: none;
-	height: 0
+	height: 0;
 }
 
 [hidden], template {

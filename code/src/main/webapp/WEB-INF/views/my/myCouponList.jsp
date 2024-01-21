@@ -36,6 +36,11 @@
 		width: 100%;
 		margin: 10px;
 	}
+	.table{
+		width: 95%;
+		margin: 0 auto;
+		text-align: center;
+	}
 
 </style>
  
@@ -45,103 +50,105 @@
 <%@include file="/WEB-INF/tiles/mySide.jsp" %>
 	
 	<div id="myCouponList"class="contents">
-	<div class="row" align="center">
-        <div>
-          <h2>쿠폰 내역</h2>
-        </div>
-	</div>
-	<br><br>
-	<div class="table-responsive">
-		<table class="table table-striped">
-			<colgroup>
-			<col width="5%" />
-			<col width="25%" />
-			<col width="20%" />
-			<col width="20%" />
-			<col width="15%" />
-			<col width="15%" />
-			</colgroup>
-			<thead>
-				<tr>
-					<th style="text-align:center" scope="col">번호</th>
-					<th style="text-align:center" scope="col">쿠폰명(사용기한)</th>
-					<th style="text-align:center" scope="col">할인값</th>
-					<th style="text-align:center" scope="col">상태</th>
-					<th style="text-align:center" scope="col">발행날짜</th>
-					<th style="text-align:center" scope="col">사용날짜</th>
-				</tr>
-			</thead>
-			<tbody>
-			<c:choose>
-				<c:when test="${fn:length(list) > 0}">
-					<c:forEach items="${list }" var="row">					
-						<tr>
-							<c:set var="sv" value="${row.COUPON_S_VALIDITY }" />
-							<c:set var="ev" value="${row.COUPON_E_VALIDITY }" />
-							<c:set var="us" value="${row.COUPON_USE_STATE }" />
-							
-							<td style="text-align:center">
-                  				${row.COUPON_STATUS_NO }
-                  			</td>
-                  			<td style="text-align:center">
-                  				${row.COUPON_ID }
-                  				<br>
-                  				${sv } ~ ${ev }
-                  				</td>
-                  			<td style="text-align:center">
-                  				${row.COUPON_VALUE }% 할인
-                  			</td>
-								
-								<jsp:useBean id="now" class="java.util.Date" />
-								<fmt:formatDate value="${now}" pattern="yyyy/MM/dd" var="nowDate" />
-								<c:choose>
-    								<c:when test="${sv < nowDate && ev > nowDate}">
-    									<c:choose>
-    										<c:when test="${us eq '0'}">
-    											<td style="text-align:center">
-    												사용가능
-    											</td>
-    										</c:when>
-    										<c:otherwise>
-    											<td style="text-align:center">
-    												사용됨
-    											</td>
-    										</c:otherwise>
-    									</c:choose>
-   					 				</c:when>
-   					 				<c:otherwise>
-   					 					<td style="text-align:center">
-    										사용기한 만료됨
-    									</td>
-									</c:otherwise>
-								</c:choose>
-							<td style="text-align:center">
-                  				${row.COUPON_ISSUE_DATE }
-                  			</td>
-                  			<c:choose>
-    							<c:when test="${COUPON_USE_DATE eq null}">
-    								<td style="text-align:center">
-    									${row.COUPON_USE_DATE }
-    								</td>
-    							</c:when>
-    							<c:otherwise>
-    								<td style="text-align:center">
-    									()
-    								</td>
-    							</c:otherwise>
-    						</c:choose>
-						</tr>
-					</c:forEach>
-				</c:when>
-				<c:otherwise>
+		<div class="row" align="center">
+	        <div>
+	          <h2>쿠폰 내역</h2>
+	        </div>
+		</div>
+		<br><br>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<colgroup>
+					<col width="5%" />
+					<col width="25%" />
+					<col width="20%" />
+					<col width="20%" />
+					<col width="15%" />
+					<col width="15%" />
+				</colgroup>
+				<thead>
 					<tr>
-						<td colspan="6">조회된 결과가 없습니다.</td>
+						<th style="text-align:center" scope="col">번호</th>
+						<th style="text-align:center" scope="col">쿠폰명(사용기한)</th>
+						<th style="text-align:center" scope="col">할인값</th>
+						<th style="text-align:center" scope="col">상태</th>
+						<th style="text-align:center" scope="col">발행날짜</th>
+						<th style="text-align:center" scope="col">사용날짜</th>
 					</tr>
-				</c:otherwise>
-			</c:choose>
-		</tbody>
-		</table>
-	</div>
+				</thead>
+				<tbody>
+				<c:choose>
+					<c:when test="${fn:length(list) > 0}">
+						<c:forEach items="${list }" var="row">					
+							<tr>
+								<c:set var="sv" value="${row.COUPON_S_VALIDITY }" />
+								<c:set var="ev" value="${row.COUPON_E_VALIDITY }" />
+								<c:set var="us" value="${row.COUPON_USE_STATE }" />
+								
+								<td style="text-align:center">
+	                  				${row.COUPON_STATUS_NO }
+	                  			</td>
+	                  			<td style="text-align:center">
+	                  				${row.COUPON_ID }
+	                  				<br>
+	                  				${sv } ~ ${ev }
+	                  				</td>
+	                  			<td style="text-align:center">
+	                  				${row.COUPON_VALUE }% 할인
+	                  			</td>
+									
+									<jsp:useBean id="now" class="java.util.Date" />
+									<fmt:formatDate value="${now}" pattern="yyyy/MM/dd" var="nowDate" />
+									<c:choose>
+	    								<c:when test="${sv < nowDate && ev > nowDate}">
+	    									<c:choose>
+	    										<c:when test="${us eq '0'}">
+	    											<td style="text-align:center">
+	    												사용가능
+	    											</td>
+	    										</c:when>
+	    										<c:otherwise>
+	    											<td style="text-align:center">
+	    												사용됨
+	    											</td>
+	    										</c:otherwise>
+	    									</c:choose>
+	   					 				</c:when>
+	   					 				<c:otherwise>
+	   					 					<td style="text-align:center">
+	    										사용기한 만료됨
+	    									</td>
+										</c:otherwise>
+									</c:choose>
+								<td style="text-align:center">
+	                  				${row.COUPON_ISSUE_DATE }
+	                  			</td>
+	                  			<c:choose>
+	    							<c:when test="${COUPON_USE_DATE eq null}">
+	    								<td style="text-align:center">
+	    									${row.COUPON_USE_DATE }
+	    								</td>
+	    							</c:when>
+	    							<c:otherwise>
+	    								<td style="text-align:center">
+	    									()
+	    								</td>
+	    							</c:otherwise>
+	    						</c:choose>
+							</tr>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<tr>
+							<td colspan="2"></td>
+							<td colspan="2">조회된 결과가 없습니다.</td>
+							<td colspan="2"></td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
+			</tbody>
+			</table>
+		</div>
 	</div>
 
 </div>

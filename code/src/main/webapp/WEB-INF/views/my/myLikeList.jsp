@@ -53,6 +53,11 @@ function fn_likeDelete(index){
 		width: 100%;
 		margin: 10px;
 	}
+	.table{
+		width: 95%;
+		margin: 0 auto;
+		text-align: center;
+	}
 
 </style>
 
@@ -76,14 +81,13 @@ function fn_likeDelete(index){
           <div class="table-responsive">
             <table class="table table-striped">
             <colgroup>
-				<col width="10%" />
-				<col width="*" />
+				<col width="70%" />
 				<col width="15%" />
 				<col width="15%" />
 			</colgroup>
               <thead>
                 <tr>
-                  <th colspan="2" style="text-align:center">상품명</th>
+                  <th style="text-align:center">상품명</th>
                   <th style="text-align:center">상품금액</th>
                   <th style="text-align:center">구매</th>
                 </tr>
@@ -114,7 +118,7 @@ function fn_likeDelete(index){
 					</c:when>	
 					<c:otherwise>
 					<tr>
-						<td colspan="7">조회된 결과가 없습니다.</td>
+						<td colspan="3">조회된 결과가 없습니다.</td>
 					</tr>
 				</c:otherwise>
 				</c:choose>

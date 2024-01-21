@@ -18,8 +18,7 @@
 
 <!-- 부트스트랩 -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<!-- Custom styles for this template -->
-<link href="css/dashboard.css" rel="stylesheet">
+
 <!-- Custom styles for this template -->
 <link href="css/justified-nav.css" rel="stylesheet">
 
@@ -35,36 +34,48 @@
 <script src="<c:url value='/js/common_dw.js'/>" charset="utf-8"></script>
 
 <style>
-.couponDetail_bottomDiv {margin: 100px 0 100px 0; border: 1px solid darkgray; width: 800px; padding: 50px 0 50px 50px; border-radius: 30px;}
+
+.container {
+	width: 80%;
+	display:flex;
+	padding:0px;
+}
+.contents {
+	width: 100%;
+	margin: 10px;
+}
+.couponDetail_bottomDiv {margin: 100px 0; border: 1px solid darkgray; width: 800px; padding: 50px 0 50px 50px; border-radius: 30px;}
 </style>
 
 </head>
 
 <body>
-<div style="width: 1200px; margin: 50px 0 0 350px;">
+<div class="container">
 	
-	<!-- include) 사이드바 -->	
 	<%@include file="/WEB-INF/tiles/adminSide.jsp" %> 
 
-	<!-- s 상단 탭 영역 -->
-	<!-- e 상단 탭 영역 -->
-	
-	<!-- s 하단 리스트 영역 -->
-	<div class="couponDetail_bottomDiv">
-		<h3 class="text-muted" style="text-align: center;">쿠폰 정보 입력</h3>
-		<form class="form-horizontal">
-			<input type="hidden" class="date" id="currentdate" value="<fmt:formatDate value="${today}" type="DATE" pattern="yyyy-MM-dd" />">
-			<table name="couponList" class="table table-striped">
-				<tbody>
-				
-				</tbody>
-			</table>
-		</form>
-	</div>
-	
-	<form id="commonForm" name="commonForm"></form>
-	<!-- e 하단 리스트 영역 -->
 
+	<div class="contents">
+		<div class="row" align="center">
+	        <div>
+	          <h2>관리자 페이지</h2>
+	        </div>
+		</div>
+		<div class="couponDetail_bottomDiv">
+			<h3 class="text-muted" style="text-align: center;">쿠폰 정보 입력</h3>
+			<form class="form-horizontal">
+				<input type="hidden" class="date" id="currentdate" value="<fmt:formatDate value="${today}" type="DATE" pattern="yyyy-MM-dd" />">
+				<table name="couponList" class="table table-striped">
+					<tbody>
+					
+					</tbody>
+				</table>
+			</form>
+		</div>
+		
+		<form id="commonForm" name="commonForm"></form>
+	<!-- e 하단 리스트 영역 -->
+	</div>
 </div>
 </body>
 <script>

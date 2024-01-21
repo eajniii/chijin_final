@@ -42,13 +42,7 @@ a:hover {
 
 
 
-.wrapper {
-/*   background-color: pink; */
-  max-width: 1000px;
-  height: 40px;
-  margin: 0 auto;
-  position: relative;
-}
+
 
 .search-bar {
   position: absolute;
@@ -102,11 +96,15 @@ li {
 
 .flex-menu {
   display: flex;
-  
+  margin-bottom:1rem;
 }
 
 .flex-menu li {
   width: 100%;
+}
+.flex-menu li:hover {
+  width: 100%;
+  font-weight:bold;
 }
 
 /* 검색 */
@@ -116,7 +114,7 @@ li {
     border:1px solid #d1d1d1;
     font: bold 12px Arial, Helvetica, Sans-serif;
     color:#bebebe;
-    width:150px;
+    width:250px;
     padding:6px 15px 6px 35px;
     border-radius:20px;
     text-shadow:0 2px 3px rgba(0,0,0,0.1);
@@ -126,10 +124,11 @@ li {
 
 #search51:focus{
 	color:#0f0f0f;
-    width:200px;
     outline:0;
 }
-
+#search51:focus::placeholder{
+	color:transparent;
+}
 </style>
 <body>
 
@@ -148,6 +147,10 @@ li {
 					<td><a href="/joinForm.do">회원가입</a></td> <td> | </td>
 					<td><a href="/loginForm.do">마이페이지</a></td> <td> | </td>
 					<td><a href="/event/list.do">이벤트</a></td> <td> | </td>
+				</c:when>
+				<c:when test="${MEMBER_NO eq 13}">
+					<td><a href="#" onClick="signOut();">로그아웃</a></td> <td> | </td>
+					<td><a href="/adminMain.do">관리페이지</a></td> <td> | </td>
 				</c:when>
 				<c:otherwise>
 					<td>Hi, ${SESSION_NAME}님!</td> <td> | </td>
@@ -180,11 +183,10 @@ li {
 <!-- 메뉴 -->
 <div class="pagemid">
   <div class="wrapper2" style="text-align: center">
-	  <a href="/main.do"><img src="/img/test4.png" style="width : 30%; height: 30%;" ></a>
+	  <a href="/main.do"><img src="/img/test4.png" style="width :330px; height: 140px;" ></a>
 <%--   <I><h1><a href="/main.do">JM COLLECTION</a></h1></I>--%>
 
     <ul class="flex-menu">
-      <li>&nbsp;</li>
       <li><a href="/shop/bestGoodsList.do">BEST</a></li>
       <li><a href="/shop/newGoodsList.do">NEW</a></li>
       <li><a href="/shop/goodsList/outer/NewItem.do">OUTER</a></li>
@@ -193,7 +195,7 @@ li {
       <li><a href="/shop/goodsList/bottom/NewItem.do">BOTTOM</a></li>
       <li><a href="/shop/goodsList/acc/NewItem.do">ACC</a></li>
     </ul>
-    <br>
+
     <div class="bar">
     </div>
   </div>

@@ -56,7 +56,7 @@
 	</div>
 
 	<div class="table-responsive">
-		<table class="table table-striped">
+		<table align="center" class="board_list">
 			<colgroup>
 			<col width="10%" />
 			<col width="30%" />
@@ -114,7 +114,9 @@
 				</c:when>
 				<c:otherwise>
 					<tr>
-						<td colspan="6">조회된 결과가 없습니다.</td>
+						<td colspan="2"></td>
+						<td colspan="2" width="100%">조회된 결과가 없습니다.</td>
+						<td colspan="2"></td>				
 					</tr>
 				</c:otherwise>
 			</c:choose>

@@ -9,7 +9,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <title>상품리스트</title>
-<link href="<c:url value="/css/board.css"/>" rel="stylesheet">
 <link href="<c:url value="/css/goods.css"/>" rel="stylesheet">
 <link href="<c:url value="/css/btn.css"/>" rel="stylesheet"> 
 
@@ -132,6 +131,7 @@ h1 {
   letter-spacing: 10px;
 }
 .card-body {
+	padding:5px;
 }
 .card-body-header{
    line-height: 25px;
@@ -222,8 +222,8 @@ h1 {
 			<a href="#this" name="title">
 			<c:set var="IMG" value="${fn:split(list.GOODS_IMAGE_STD,',')}"/>
 			<div class="imgswap"> 
-			<img src="/file/${IMG[0]}" width="400" height="400"> 
-			<img src="/file/${IMG[1]}" width="400" height="400">
+				<img class="card-img-top" src="/file/${IMG[0]}" width="400" height="400"> 
+				<img class="card-img-top" src="/file/${IMG[1]}" width="400" height="400">
 		    </div>
 			<c:set var="PICK" value="${fn:split(list.GOODS_PICK,',')}"/>
 			<c:forEach var="PICK1" items="${PICK}" varStatus="g">
@@ -238,11 +238,12 @@ h1 {
 				</c:if>
 			</c:forEach>
 			<br>
-			
-			<font class="font1" >${list.GOODS_NAME}</font><br>
-			<font class="font2"><fmt:formatNumber value="${list.GOODS_SELL_PRICE}" pattern="#,###"> </fmt:formatNumber>원</font>
-			<input type="hidden" id="IDX" name="IDX" value="${list.GOODS_NO}"> 
-		</a>
+			 <div class="card-body">
+				<font class="font1" >${list.GOODS_NAME}</font><br>
+				<font class="font2"><fmt:formatNumber value="${list.GOODS_SELL_PRICE}" pattern="#,###"> </fmt:formatNumber>원</font>
+				<input type="hidden" id="IDX" name="IDX" value="${list.GOODS_NO}">
+			 </div> 
+			</a>
 		</div>
 		</c:forEach>
 		</tbody>

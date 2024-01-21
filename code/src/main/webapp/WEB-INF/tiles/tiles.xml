@@ -9,10 +9,12 @@
   <definition name="base" template="/WEB-INF/tiles/layout.jsp">
   
   	<put-attribute name="header" value="/WEB-INF/tiles/header.jsp"/>
+  	<put-attribute name="left" value=""/>
   	<put-attribute name="content" value=""/>
   	<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp"/>
   	
   </definition>
+
 
   <!-- base를 상속받는 -->
   <definition name="main" extends="base">
@@ -60,34 +62,11 @@
   </definition>
   
   <definition name="my/*" extends="base">
-  
+    <put-attribute name="left" value="/WEB-INF/tiles/mySide.jsp"/>
   	<put-attribute name="content" value="/WEB-INF/views/my/{1}.jsp"/>
   	
   </definition>
   
-  <definition name="/my/myOrderList" extends="base">
-  
-	<put-attribute name="content" value="/WEB-INF/views/my/myOrderList.jsp"/>
-  	
-  </definition>
-  
-  <definition name="/my/myPointList" extends="base">
-  
-	<put-attribute name="content" value="/WEB-INF/views/my/myPointList.jsp"/>
-  	
-  </definition>
-  
-  <definition name="/my/myGoodsQnaList" extends="base">
-  
-	<put-attribute name="content" value="/WEB-INF/views/my/myGoodsQnaList.jsp"/>
-  	
-  </definition>
-  
-  <definition name="/my/myReviewList" extends="base">
-  
-	<put-attribute name="content" value="/WEB-INF/views/my/myReviewList.jsp"/>
-  	
-  </definition>
   
 
   <!-- 수민 -->
@@ -161,7 +140,11 @@
   </definition>
   
   
-
+  <definition name="admin/*" extends="base">
+     <put-attribute name="left" value="/WEB-INF/tiles/adminSide.jsp"/>
+     <put-attribute name="content" value="/WEB-INF/views/admin/{1}.jsp"/>
+     
+  </definition>
   
   <!-- 매핑 -->
   

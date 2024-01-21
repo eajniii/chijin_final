@@ -13,28 +13,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="<c:url value='/js/common1.js'/>" charset="utf-8"></script>
 
-<link href="<c:url value="/css/board.css"/>" rel="stylesheet">
+
 <link href="<c:url value="/css/goods.css"/>" rel="stylesheet">
 <link href="<c:url value="/css/btn.css"/>" rel="stylesheet"> 
 <link rel="stylesheet" type="text/css" href="<c:url value='/css/ui.css'/>" />
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <head>
 
 <style>
-
-#main-container
-{
-   min-height: 400px;
-   margin: 0 0 0 125px;
-   padding: 20px;
-   border-top: 1px solid #fff;  
-   border-right: 1px solid #fff;     
-   border-left: 1px solid #fff; 
-   border-bottom: 1px solid #fff;    
-}
 
 /* 폰트 */
 .mTitle {
@@ -67,6 +55,7 @@
     line-height: 24px;
     white-space: normal;
     line-height: 27px;
+    padding:5px;
 }
 
 .font2 {
@@ -76,6 +65,7 @@
     color: #333;
     font-family: unset;
     line-height: 27px;
+    padding:5px;
 }
 
 /* css 초기화  */
@@ -111,14 +101,11 @@ table {
 }
 /*css 초기화*/
 .card {
-   float:left;
    height: 500px;
-   width: 20%;
+   width: 270px;
    border-radius: 15px;
-   display: inline-block;
-   margin-top: 30px;
-   margin-left: 50px;
-   margin-bottom: 30px;
+   flex: auto;
+   margin: 20px;
    position: relative;
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
    overflow: hidden;

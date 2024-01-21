@@ -15,18 +15,36 @@
 
 <!-- 부트스트랩 -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="https://kit.fontawesome.com/db619109b0.js" crossorigin="anonymous"></script>
 
-
+<style>
+.sidebar{
+	width: 270px; 
+	height: 1000px; 
+	top:130px; 
+	align:left;
+}
+.mypage-top{
+	width: 100%;
+	height: 130px;
+	background-color: #F78181;
+	text-align: center;
+	margin-top: 10px;
+}
+.nav-second-level>li>a{
+	width:200px;
+}
+</style>
 </head>
 <body>
-	<!-- /.navbar-header -->
-	<div  style="width: 220px; height: 70%; top:130px; align:left" class="navbar-default sidebar" role="navigation">
-	
-	<div style="width: 100%;height: 130px;background-color: #F78181;text-align: center;">
-		<br />
-		<h3>마이페이지</h3>
-		<p>MYPAGE</p>
-	</div>
+
+	<div class="navbar-default sidebar" role="navigation">
+		
+		<div class="mypage-top">
+			<br />
+			<h3>마이페이지</h3>
+			<p>MYPAGE</p>
+		</div>
 
 		<div style="width: 100%;height: 50px; text-align: center;">
 		<br />
@@ -36,7 +54,7 @@
 			<ul class="nav" id="side-menu">
 			
 				<li><a href="#" style="background: #F8F8F8;">
-						<b class="fa fa-bar-chart-o fa-fw">나의 쇼핑정보</b> <span class="fa arrow">▼</span>
+						<b class="fa fa-bar-chart-o">나의 쇼핑정보</b> <span class="fa arrow">▼</span>
 				</a>
 					<ul class="nav nav-second-level">
 						<li><a href="/myOrderList.do">- 주문/배송 내역</a></li>
@@ -49,7 +67,7 @@
 
 				<li class="active">
 				<a href="#" style="background: #F8F8F8;">
-						<b class="fa fa-bar-chart-o fa-fw">나의 문의내역</b> <span class="fa arrow">▼</span>
+						<b class="fa fa-bar-chart-o ">나의 문의내역</b> <span class="fa arrow">▼</span>
 				</a>
 					<ul class="nav nav-second-level">
 						<li><a href="/my/openMyReview.do">- 나의 상품평</a></li>
@@ -59,7 +77,7 @@
 
 				<li class="active">
 				<a href="#" style="background: #F8F8F8;">
-						<b class="fa fa-bar-chart-o fa-fw">개인정보</b> <span class="fa arrow">▼</span>
+						<span class="fa fa-bar-chart-o"><b>개인정보</b></span> <span class="fa arrow">▼</span>
 				</a>
 					<ul class="nav nav-second-level">
 						<li><a href="/my/memberModify.do">- 회원정보수정</a></li>
