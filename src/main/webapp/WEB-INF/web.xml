@@ -59,4 +59,18 @@
 		<session-timeout>60</session-timeout>
 	</session-config>
 
+  	<!-- 24.02.20 캐시 크기 설정 (7-4) -->
+	<context-param>
+	    <param-name>cacheSize</param-name>
+	    <param-value>5000</param-value> <!-- 원하는 캐시 크기로 설정 -->
+	</context-param>
+ 	<!-- 24.02.20 header에 no-cache 설정 (7-4) -->
+	<filter>
+	    <filter-name>NoCacheFilter</filter-name>
+	    <filter-class>stu.common.common.NoCacheFilter</filter-class> 
+	</filter>
+	<filter-mapping>
+	    <filter-name>NoCacheFilter</filter-name>
+	    <url-pattern>/*</url-pattern> <!-- 필터를 어떤 URL 패턴에 적용할지 설정 -->
+	</filter-mapping>
 </web-app>
