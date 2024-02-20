@@ -101,14 +101,4 @@ public class CommonController {
 		return mv;
 	}
 
-	//봇 크롤링 방지
-	@RequestMapping(value = "/robots.txt")
-	@ResponseBody
-	public void robotsBlock(HttpServletRequest request, HttpServletResponse response) {
-		try {
-			response.getWriter().write("User-agent: *\nDisallow: /\n");
-		} catch (IOException e) {
-			log.info("exception", e);
-		}
-	}
 }
