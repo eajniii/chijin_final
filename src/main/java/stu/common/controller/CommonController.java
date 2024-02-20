@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import stu.common.common.CommandMap;
 import stu.common.service.CommonService;
@@ -98,5 +99,16 @@ public class CommonController {
 		mv.setViewName("admin/server");
 		mv.addObject("out", out);
 		return mv;
+	}
+
+	//봇 크롤링 방지
+	@RequestMapping(value = "/robots.txt")
+	@ResponseBody
+	public void robotsBlock(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			response.getWriter().write("User-agent: *\nDisallow: /\n");
+		} catch (IOException e) {
+			log.info("exception", e);
+		}
 	}
 }
