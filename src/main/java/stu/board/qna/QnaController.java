@@ -26,7 +26,6 @@ public class QnaController {
 	@RequestMapping(value="/qna/openQnaList.do")
     public ModelAndView openQnaList(CommandMap commandMap) throws Exception{
     	ModelAndView mv = new ModelAndView("/board/qnaList");
-    	
     	return mv;
     }
 	
@@ -35,7 +34,12 @@ public class QnaController {
     	ModelAndView mv = new ModelAndView("jsonView");
 
     	List<Map<String,Object>> list = qnaService.selectQnaList(commandMap.getMap());
-    	System.out.println(list);
+       	
+       	for(Map<String,Object> article : list ) {
+       		String name = (String) article.get("QNA_NAME");
+       		String maskedName = maskName(name);
+       		article.put("QNA_NAME", maskedName);
+       	}
     	mv.addObject("list", list);
     	if(list.size() > 0){
     		mv.addObject("TOTAL", list.get(0).get("TOTAL_COUNT"));
@@ -45,6 +49,10 @@ public class QnaController {
     	}
     	
     	return mv;
+    }
+	
+	private String maskName(String name) {
+        return name.substring(0, 1) + "***";
     }
 	
 	@RequestMapping(value="/qna/openQnaWrite.do")
