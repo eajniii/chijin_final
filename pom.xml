@@ -62,7 +62,7 @@
 	        <version>19.8.0.0</version>
 	    </dependency>
 	    
-		<!-- Spring -->
+		<!-- Spring 프레임워크-->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -131,7 +131,6 @@
 			<artifactId>mybatis</artifactId>
 			<version>3.2.6</version>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
@@ -139,19 +138,16 @@
 		</dependency>
 		
 		<!-- tiles -->
-		
 		<dependency>
 	   		<groupId>org.apache.tiles</groupId>
 	    	<artifactId>tiles-extras</artifactId>
 	   	 	<version>3.0.8</version>
 		</dependency>
-	 
 		<dependency>
 	    	<groupId>org.apache.tiles</groupId>
 	    	<artifactId>tiles-servlet</artifactId>
 	   	 	<version>3.0.8</version>
 		</dependency>
-	 
 		<dependency>
 	    	<groupId>org.apache.tiles</groupId>
 	   	 	<artifactId>tiles-jsp</artifactId>
