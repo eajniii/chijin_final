@@ -8,48 +8,6 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 
-	<context:component-scan base-package="egovframework.example.security"/>
-
-	<http auto-config="true" use-expressions="true">
-
-		<!-- 모든 url 패턴에 ROLE_USER의 권한을 가지고 있을때만 접근가능 -->
-		<!-- <intercept-url pattern="/**" access="ROLE_USER" /> -->
-		<intercept-url pattern="/userPage/**" access="hasRole('ROLE_USER')"/>
-		<intercept-url pattern="/**" access="permitAll"/>
-		<!-- <access-denied-handler ref="userDeniedHandler" /> -->
-
-
-		<form-login
-			username-parameter="MEMBER_ID"
-			password-parameter="MEMBER_PASSWD"
-			login-processing-url="/loginAction.do"
-			login-page="/loginForm.do"
-			default-target-url="/"
-		/>
-
-		<!-- 로그아웃할 url 및 로그아웃성공시 이동할 url -->
-
-		<logout
-			logout-url="/logout"
-			logout-success-url="/"
-			invalidate-session="true"
-			delete-cookies="true" />
-
-		<remember-me data-source-ref="dataSource"
-            remember-me-parameter="remember-me"
-            token-validity-seconds="604800"/>
-
-         <!-- <remember-me services-ref="" /> -->
-	</http>
-
-	<beans:bean id="userDeniedHandler" class="egovframework.example.security.UserDeniedHandler"></beans:bean>
-
-	<authentication-manager>
-		<authentication-provider ref="userAuthProvider"></authentication-provider>
-		<authentication-provider user-service-ref="userService"></authentication-provider>
-	</authentication-manager>
-
-	<beans:bean id="userService" class="egovframework.example.sample.service.CustomUserDetailsService"/>
-	<beans:bean id="userAuthProvider" class="egovframework.example.security.CustomAuthenticationProvider"/>
+	<context:component-scan base-package="stu"/>
 
 </beans:beans>
