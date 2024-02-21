@@ -2,18 +2,18 @@
 <security:http auto-config="true" use-expressions="true">
     <security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
     <security:form-login 
-        login-page="/login" 
-        default-target-url="/welcome" 
-        authentication-failure-url="/login?error" 
-        username-parameter="username" 
-        password-parameter="password" />
-    <security:logout logout-success-url="/login?logout" />
+        login-page="/loginForm.dao" 
+        default-target-url="/main.do" 
+        authentication-failure-url="/error" 
+        username-parameter="MEMBER_ID" 
+        password-parameter="MEMBER_PASSWD" />
+    <security:logout logout-success-url="/main.do" />
 </security:http>
 
 <security:authentication-manager>
-    <security:authentication-provider>
-        <security:user-service>
-            <security:user name="user" password="password" authorities="ROLE_USER" />
+	<security:authentication-provider>
+		<security:user-service>
+			<security:user name="user" password="password" authorities="ROLE_USER" />
             <!-- 실제 애플리케이션에서는 DB를 통해 사용자 정보를 관리해야 합니다. -->
         </security:user-service>
     </security:authentication-provider>
