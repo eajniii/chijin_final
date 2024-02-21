@@ -16,7 +16,7 @@
 		<!-- <intercept-url pattern="/**" access="ROLE_USER" /> -->
 		<intercept-url pattern="/userPage/**" access="hasRole('ROLE_USER')"/>
 		<intercept-url pattern="/**" access="permitAll"/>
-		<access-denied-handler ref="userDeniedHandler" />
+		<!-- <access-denied-handler ref="userDeniedHandler" /> -->
 
 
 		<form-login
