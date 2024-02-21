@@ -71,14 +71,10 @@ h1 {
 		<h3 class="contents">로그인</h3>
 		<div class="logintable">
 		<form action="/loginAction.do" method="POST" id="frm">
-			<input type="text" class="form-control" name="MEMBER_ID"
-				id="MEMBER_ID" placeholder="아이디">
-			<input type="password" class="form-control" name="MEMBER_PASSWD"
-				id="MEMBER_PASSWD" placeholder="비밀번호">
-			<a href="/findPw.do">비밀번호
-					재설정</a>
-			<a href="/findId.do">아이디
-					찾기</a>
+			<input type="text" class="form-control" name="MEMBER_ID" id="MEMBER_ID" placeholder="아이디">
+			<input type="password" class="form-control" name="MEMBER_PASSWD" id="MEMBER_PASSWD" placeholder="비밀번호">
+			<a href="/findPw.do">비밀번호 재설정</a>
+			<a href="/findId.do">아이디 찾기</a>
 			<button type="submit" class="defaultBtn loginBtn" id="login">로그인</button>
 		</form>
 			<p>

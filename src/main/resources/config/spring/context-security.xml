@@ -14,7 +14,7 @@
     					 password-parameter="MEMBER_PASSWD" 
     					 login-page="/loginForm.do" 
     					 login-processing-url="/loginAction.do" 
-    					 default-target-url="/"/>
+    					 default-target-url="/main.do"/>
         
 	</security:http>
 	

@@ -39,7 +39,7 @@ public class LoginController {
 	}
 
 	// 로그인 이후 메인페이지 이동
-	@RequestMapping(value = "/loginAction.do", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/loginAction.do", method = RequestMethod.POST)
 	public ModelAndView loginAction(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
@@ -68,7 +68,7 @@ public class LoginController {
 			}
 			return mv;
 		}
-	}
+	}*/
 
 	// 소셜로그인 이후 메인페이지 이동
 	@RequestMapping(value = "/socialLoginAction.do", method = RequestMethod.POST)
