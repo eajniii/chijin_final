@@ -74,6 +74,19 @@
 	    <url-pattern>/*</url-pattern> <!-- 필터를 어떤 URL 패턴에 적용할지 설정 -->
 	</filter-mapping>
 	
+	<security-constraint>
+	  <display-name>Forbidden</display-name>
+	  <web-resource-collection>
+	    <web-resource-name>Protected Context</web-resource-name>
+	    <url-pattern>/*</url-pattern>
+	    <http-method>PUT</http-method>
+	    <http-method>DELETE</http-method>
+	    <http-method>TRACE</http-method>
+	    <http-method>CONNECT</http-method>
+	  </web-resource-collection>
+	  <auth-constraint></auth-constraint>
+	</security-constraint>
+
 	<!-- 에러 페이지 설정 -->
 	<error-page>
 		<error-code>400</error-code>
@@ -119,6 +132,6 @@
 		<error-code>505</error-code>
 		<location>/error/error.html</location>
 	</error-page>
-	
+
 </web-app>
 

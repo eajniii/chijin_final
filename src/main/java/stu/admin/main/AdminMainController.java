@@ -478,6 +478,20 @@ public class AdminMainController {
 		ModelAndView mv = new ModelAndView("jsonView");
 		
 		List<Map<String, Object>> member_admin_list = adminMainService.selectMemberList(commandMap.getMap());
+
+		for(Map<String,Object> member : member_admin_list) {
+			String name = (String) member.get("MEMBER_NAME");
+			String maskedName = maskName(name);
+			String mail = (String) member.get("MEMBER_EMAIL");
+			String maskedEmail = maskEmail(mail);
+			String phone = (String) member.get("MEMBER_PHONE");
+			String maskedNum = maskNum(phone);
+			System.out.println(maskedName);
+			System.out.println(maskedEmail);
+			member.put("MEMBER_NAME", maskedName);
+			member.put("MEMBER_EMAIL", maskedEmail);
+			member.put("MEMBER_PHONE", maskedNum);
+		}
 		
 		mv.addObject("member_admin_list", member_admin_list);
 		
@@ -489,7 +503,16 @@ public class AdminMainController {
 		
 		return mv;
 	}
-	  
+	private String maskName(String name) {
+        return name.substring(0, 1) + "***";
+    }
+	private String maskEmail(String email) {
+        return email.substring(0, 2) + "***" + email.substring(13);
+    }
+	
+	private String maskNum(String phone) {
+        return phone.substring(0, 2) + "***" + phone.substring(9);
+    }
 }
 
 
