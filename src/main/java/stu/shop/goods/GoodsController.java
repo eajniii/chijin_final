@@ -245,24 +245,27 @@ public class GoodsController {
 	public ModelAndView goodsDetailList(CommandMap commandMap, HttpServletRequest request) throws Exception { // 상품 디테일 제이슨
 
 		ModelAndView mv = new ModelAndView("jsonView");
-		List<Map<String, Object>> list = null;
+		List<Map<String, Object>> goodsQnaList = goodsService.selectGoodsQna(commandMap.getMap()); // QNA 리스트
+		for(Map<String,Object> q : goodsQnaList) {
+			String name = (String) q.get("MEMBER_NAME");
+			String maskedQName = maskName(name);
+			q.put("MEMBER_NAME", maskedQName);
+		}
 
-		list = goodsService.selectGoodsQna(commandMap.getMap()); // QNA 리스트
-
-		System.out.println("디테일리스트=" + list);
+		mv.addObject("list", goodsQnaList);
 		
-
-		mv.addObject("list", list);
-		
-		if (list.size() > 0) {
-			mv.addObject("TOTAL", list.get(0).get("TOTAL_COUNT"));
+		if (goodsQnaList.size() > 0) {
+			mv.addObject("TOTAL", goodsQnaList.get(0).get("TOTAL_COUNT"));
 		} else {
 			mv.addObject("TOTAL", 0);
 		}
 
 		List<Map<String, Object>> reviewList = goodsService.selectReviewList(commandMap.getMap()); // Review 리스트
-		System.out.println("리뷰리스트=" + reviewList);
-		
+		for(Map<String,Object> r : reviewList) {
+			String name = (String) r.get("MEMBER_NAME");
+			String maskedRName = maskName(name);
+			r.put("MEMBER_NAME", maskedRName);
+		}
 		mv.addObject("reviewList", reviewList);
 		if (reviewList.size() > 0) {
 			mv.addObject("TOTAL1", reviewList.get(0).get("TOTAL_COUNT1"));
@@ -273,6 +276,10 @@ public class GoodsController {
 		return mv;
 	}
 
+	private String maskName(String name) {
+        return name.substring(0, 1) + "***";
+    }
+	
 	@RequestMapping(value = "/shop/openGoodsWrite.do") // url
 	public ModelAndView goodsWriteForm(CommandMap commandMap) throws Exception { // 상품등록 폼
 

@@ -149,7 +149,10 @@ public class AdminMainServiceImpl implements AdminMainService {
 	}
 
 	public List<Map<String, Object>> selectMemberList(Map<String, Object> map) throws Exception {
+
 		return adminDao.selectMemberList(map);
 	}
 	
+
 }
+
