@@ -20,16 +20,16 @@ public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationS
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 		// 로그인 성공 시 수행할 로직
 	    // 예: 세션에 사용자 정보 저장
-		logger.info("**********************************checkin");
-	    HttpSession session = request.getSession();
-	    User user = (User) authentication.getPrincipal();
-	    session.setAttribute("userInfo", user);
-	    logger.info("**********************************username: "+user.getUsername());
-	    logger.info("**********************************password: "+user.getPassword());
+	    //HttpSession session = request.getSession();
+	    //User user = (User) authentication.getPrincipal();
+	    //session.setAttribute("userInfo", user);
+	    //logger.info("**********************************username: "+user.getUsername());
+	    //logger.info("**********************************password: "+user.getPassword());
 	    
 	    // 리다이렉션
-	    setDefaultTargetUrl("redirect:/main.do");
-	    super.onAuthenticationSuccess(request, response, authentication);
+	    //setDefaultTargetUrl("/loginAction.do");
+	    //super.onAuthenticationSuccess(request, response, authentication);
+		getRedirectStrategy().sendRedirect(request, response, "/loginAction.do");
 	}
 
 }
