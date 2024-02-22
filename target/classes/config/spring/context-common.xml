@@ -22,5 +22,5 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="maxUploadSize" value="100000000" />	<!-- 100000000byte = 10MB -->
 		<property name="maxInMemorySize" value="100000000" />
 	</bean>
-
+	
 </beans>
