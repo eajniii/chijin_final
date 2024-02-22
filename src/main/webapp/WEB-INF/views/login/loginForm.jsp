@@ -70,7 +70,7 @@ h1 {
 	<div id="loginform">
 		<h3 class="contents">로그인</h3>
 		<div class="logintable">
-		<form action="/loginAction.do" method="POST" id="frm">
+		<form action="/loginAction" method="POST" id="frm">
 			<input type="text" class="form-control" name="MEMBER_ID" id="MEMBER_ID" placeholder="아이디">
 			<input type="password" class="form-control" name="MEMBER_PASSWD" id="MEMBER_PASSWD" placeholder="비밀번호">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />

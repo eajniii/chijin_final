@@ -19,7 +19,7 @@
     <security:form-login username-parameter="MEMBER_ID" 
     					 password-parameter="MEMBER_PASSWD" 
     					 login-page="/loginForm.do"
-    					 login-processing-url="/loginAction.do"
+    					 login-processing-url="/loginAction"
     					 authentication-success-handler-ref="CustomAuthenticationSuccessHandler"/>
 	</security:http>
 	
