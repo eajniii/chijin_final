@@ -2,20 +2,25 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xmlns:security="http://www.springframework.org/schema/security"
-	   xsi:schemaLocation="http://www.springframework.org/schema/security
-						   http://www.springframework.org/schema/security/spring-security.xsd
-						   http://www.springframework.org/schema/beans
-						   http://www.springframework.org/schema/beans/spring-beans.xsd">
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/security 
+						   http://www.springframework.org/schema/security/spring-security.xsd 
+						   http://www.springframework.org/schema/beans 
+						   http://www.springframework.org/schema/beans/spring-beans.xsd 
+						   http://www.springframework.org/schema/context 
+						   http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<!-- <context:component-scan base-package="stu"/> -->
+	<context:component-scan base-package="stu"/>
+	
+	<bean id="CustomAuthenticationSuccessHandler" class="stu.member.login.CustomAuthenticationSuccessHandler"/>
+	
 	<security:http>
     	
     <security:form-login username-parameter="MEMBER_ID" 
     					 password-parameter="MEMBER_PASSWD" 
-    					 login-page="/loginForm.do" 
-    					 login-processing-url="/loginAction.do" 
-    					 default-target-url="/main.do"/>
-        
+    					 login-page="/loginForm.do"
+    					 login-processing-url="/loginAction.do"
+    					 authentication-success-handler-ref="CustomAuthenticationSuccessHandler"/>
 	</security:http>
 	
 	<security:authentication-manager>
