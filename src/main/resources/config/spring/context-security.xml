@@ -22,7 +22,7 @@
 		<security:authentication-provider>
 			<security:jdbc-user-service data-source-ref="dataSource" 
 										users-by-username-query="select MEMBER_ID, MEMBER_PASSWD, CASE WHEN MEMBER_DELETE=0 THEN 1 ELSE 0 END as enabled FROM MEMBER WHERE MEMBER_ID=?"
-										authorities-by-username-query="select MEMBER_NAME, MEMBER_GRADE from MEMBER where MEMBER_ID=? "/>
+										authorities-by-username-query="select MEMBER_ID, MEMBER_GRADE from MEMBER where MEMBER_ID=? "/>
 		</security:authentication-provider>
 	</security:authentication-manager>
 </beans>
