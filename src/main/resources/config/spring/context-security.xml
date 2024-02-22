@@ -20,7 +20,9 @@
 	
 	<security:authentication-manager>
 		<security:authentication-provider>
-			<security:jdbc-user-service data-source-ref="dataSource" id="" users-by-username-query="" authorities-by-username-query=""/>
+			<security:jdbc-user-service data-source-ref="dataSource" 
+										users-by-username-query="select MEMBER_ID, MEMBER_PASSWD, MEMBER_DELETE FROM MEMBER WHERE MEMBER_ID=?" 
+										authorities-by-username-query="select MEMBER_NAME, MEMBER_GRADE from MEMBER where MEMBER_ID=? "/>
 		</security:authentication-provider>
 	</security:authentication-manager>
 </beans>
