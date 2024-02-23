@@ -23,6 +23,8 @@
 	    					 login-page="/loginForm.do"
 	    					 login-processing-url="/loginAction"
 	    					 authentication-success-handler-ref="CustomAuthenticationSuccessHandler"/>
+	
+		<security:csrf disabled="true"/>
 	</security:http>
 	
 	<security:authentication-manager>
