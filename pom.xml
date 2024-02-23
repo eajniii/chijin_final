@@ -34,29 +34,6 @@
 	</repositories>
 	
 	<dependencies>
-		
-		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
-		<!-- 스프링 시큐리티 -->
-		<dependency>
-	        <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-core</artifactId>
-		    <version>${spring.security.version}</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-web</artifactId>
-		    <version>${spring.security.version}</version>
-	   </dependency>
-       <dependency>
-            <groupId>org.springframework.security</groupId>
-	  	    <artifactId>spring-security-config</artifactId>
-    	    <version>${spring.security.version}</version>
-       </dependency>		
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-taglibs</artifactId>
-			<version>${spring.security.version}</version>
-		</dependency>
 
 	   <!-- 오라클 jdbc -->
 	   <dependency>
