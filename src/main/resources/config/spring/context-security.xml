@@ -15,12 +15,14 @@
 	<bean id="CustomAuthenticationSuccessHandler" class="stu.member.login.CustomAuthenticationSuccessHandler"/>
 	
 	<security:http>
-    	
-    <security:form-login username-parameter="MEMBER_ID" 
-    					 password-parameter="MEMBER_PASSWD" 
-    					 login-page="/loginForm.do"
-    					 login-processing-url="/loginAction"
-    					 authentication-success-handler-ref="CustomAuthenticationSuccessHandler"/>
+    	<security:intercept-url pattern="/main.do" access="permitAll"/>
+    	<security:intercept-url pattern="/mainList.do" access="permitAll"/>
+    	<security:intercept-url pattern="/shop/**" access="permitAll"/>
+	    <security:form-login username-parameter="MEMBER_ID" 
+	    					 password-parameter="MEMBER_PASSWD" 
+	    					 login-page="/loginForm.do"
+	    					 login-processing-url="/loginAction"
+	    					 authentication-success-handler-ref="CustomAuthenticationSuccessHandler"/>
 	</security:http>
 	
 	<security:authentication-manager>
