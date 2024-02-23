@@ -28,7 +28,8 @@ public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationS
 	    logger.info("**********************************username: "+user.getUsername());
 	    logger.info("**********************************password: "+user.getPassword());
 	    logger.info("**********************************auth: "+authentication.toString());
-	    
+	    logger.info("**********************************auth: "+authentication.getAuthorities());
+
 	    // 리다이렉션
 	    //setDefaultTargetUrl("/loginAction.do");
 	    //super.onAuthenticationSuccess(request, response, authentication);
