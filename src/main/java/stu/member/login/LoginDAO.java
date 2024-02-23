@@ -55,6 +55,12 @@ public class LoginDAO extends AbstractDao {
 			return (Map<String, Object>)selectOne("login.logout", map);
 		}
 		
+	// 로그인 불일치 횟수 update
+		public void loginCountUpdate(Map<String, Object> map) throws Exception {
+			insert("login.loginCountUpdate",map);
+		}
+		
+		
 		
 	
 }

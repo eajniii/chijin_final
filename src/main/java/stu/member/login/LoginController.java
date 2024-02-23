@@ -45,29 +45,42 @@ public class LoginController {
 		HttpSession session = request.getSession();
 
 		Map<String, Object> chk = loginService.loginAction(commandMap.getMap());
-
-		if (chk == null) {
+		
+		//case1. id, pw 틀려서 로그인 불가
+		if (chk==null) {
 			mv.setViewName("login/loginForm");
 			mv.addObject("message", "해당 아이디 혹은 비밀번호가 일치하지 않습니다.");
-			return mv;
-		} else {
-			if (chk.get("MEMBER_DELETE").equals("1")) {
-				mv.setViewName("login/loginForm");
-				mv.addObject("message", "탈퇴한 회원 입니다.");
-			} else {
-				if (chk.get("MEMBER_PASSWD").equals(commandMap.get("MEMBER_PASSWD"))) {
-					session.setAttribute("SESSION_ID", chk.get("MEMBER_ID"));
-					session.setAttribute("SESSION_NO", chk.get("MEMBER_NO"));
-					session.setAttribute("SESSION_NAME", chk.get("MEMBER_NAME"));
-
-					mv = new ModelAndView("redirect:/main.do");
-					mv.addObject("MEMBER", chk);
-
-					session.getMaxInactiveInterval();
-				}
-			}
-			return mv;
+			
+			//일치하는 id가 있을 경우 MEMBER_LOGIN_COUNT값 증가시키기
+			loginService.loginCountUpdate(commandMap.getMap());
 		}
+		
+		else{
+			log.info("*********************************login_count: "+chk.get("MEMBER_LOGIN_COUNT"));
+			//case2. 로그인 불가 상황 - 로그인 시도 횟수 초과, 탈퇴한 회원
+			if(chk.get("MEMBER_DELETE").equals("1")) {
+				mv.setViewName("login/loginForm");
+				mv.addObject("message", "탈퇴한 회원 입니다.");			
+			}
+			else if (chk.get("MEMBER_LOGIN_COUNT").equals("4")) {
+				mv.setViewName("login/loginForm");
+				mv.addObject("message", "일일 로그인 시도 횟수(5회)를 초과하셨습니다.");
+			}
+			
+			//CASE3. 회원정보 일치
+			else {
+				session.setAttribute("SESSION_ID", chk.get("MEMBER_ID"));
+				session.setAttribute("SESSION_NO", chk.get("MEMBER_NO"));
+				session.setAttribute("SESSION_NAME", chk.get("MEMBER_NAME"));
+
+				mv = new ModelAndView("redirect:/main.do");
+				mv.addObject("MEMBER", chk);
+
+				session.getMaxInactiveInterval();
+			}
+		}
+		
+		return mv;
 	}
 
 	// 소셜로그인 이후 메인페이지 이동

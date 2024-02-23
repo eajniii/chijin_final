@@ -69,6 +69,7 @@
 				MEMBER_ADDR2,
 				MEMBER_GRADE,
 				MEMBER_DELETE,
+				MEMBER_LOGIN_COUNT,
 				TO_CHAR(MEMBER_BIRTH, 'YYYY/MM/DD') MEMBER_BIRTH
 			FROM 
 				MEMBER 
@@ -83,5 +84,11 @@
 	<update id="lastLogin" parameterType="String">
 		UPDATE MEMBER SET MEMBER_LOG = SYSDATE WHERE MEMBER_NO = #{MEMBER_NO}
 	</update>
+	
+	<!-- 로그인 카운트 증가 -->
+	<update id="loginCountUpdate" parameterType="String">
+		UPDATE MEMBER SET MEMBER_LOGIN_COUNT=MEMBER_LOGIN_COUNT+1 WHERE MEMBER_ID = #{MEMBER_ID}
+	</update>
+
 	
 </mapper>

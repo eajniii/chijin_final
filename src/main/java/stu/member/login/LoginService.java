@@ -18,8 +18,10 @@ public interface LoginService {
 	
 	Map<String, Object> selectFindPw2(Map<String, Object> map) throws Exception; // 이메일 비밀번호 찾기
 	
-	Map<String, Object> selectFindId(Map<String, Object> map) throws Exception; // 이메일 아이디 찾기
+	Map<String, Object> selectFindId(Map<String, Object> map) throws Exception; // 이메일 아이디 찾기	
 	
 	public void lastLogin(Object x) throws Exception; // 마지막 로그인 날짜 갱신
+	
+	public void loginCountUpdate(Map<String, Object> map) throws Exception; // 로그인 시도 횟수 update
 	
 }
