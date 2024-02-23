@@ -38,36 +38,34 @@ public class LoginController {
 		return mv;
 	}
 
-	// 로그인 이후 메인페이지 이동
+	// 일반 사용자 로그인 이후 메인페이지 이동
 	@RequestMapping(value = "/loginAction.do")
-	public ModelAndView loginAction(CommandMap commandMap, HttpServletRequest request) throws Exception {
+	public ModelAndView loginAction(HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
-
+		CommandMap commandMap = (CommandMap)request.getSession().getAttribute(null);
 		Map<String, Object> chk = loginService.loginAction(commandMap.getMap());
 
-		if (chk == null) {
+			//mv.setViewName("login/loginForm");
+			//mv.addObject("message", "해당 아이디 혹은 비밀번호가 일치하지 않습니다.");
+
+		if (chk.get("MEMBER_DELETE").equals("1")) {
 			mv.setViewName("login/loginForm");
-			mv.addObject("message", "해당 아이디 혹은 비밀번호가 일치하지 않습니다.");
-			return mv;
+			mv.addObject("message", "탈퇴한 회원 입니다.");
 		} else {
-			if (chk.get("MEMBER_DELETE").equals("1")) {
-				mv.setViewName("login/loginForm");
-				mv.addObject("message", "탈퇴한 회원 입니다.");
-			} else {
-				if (chk.get("MEMBER_PASSWD").equals(commandMap.get("MEMBER_PASSWD"))) {
-					session.setAttribute("SESSION_ID", chk.get("MEMBER_ID"));
-					session.setAttribute("SESSION_NO", chk.get("MEMBER_NO"));
-					session.setAttribute("SESSION_NAME", chk.get("MEMBER_NAME"));
+			if (chk.get("MEMBER_PASSWD").equals(commandMap.get("MEMBER_PASSWD"))) {
+				session.setAttribute("SESSION_ID", chk.get("MEMBER_ID"));
+				session.setAttribute("SESSION_NO", chk.get("MEMBER_NO"));
+				session.setAttribute("SESSION_NAME", chk.get("MEMBER_NAME"));
 
-					mv = new ModelAndView("redirect:/main.do");
-					mv.addObject("MEMBER", chk);
+				mv = new ModelAndView("redirect:/main.do");
+				mv.addObject("MEMBER", chk);
 
-					session.getMaxInactiveInterval();
-				}
+				session.getMaxInactiveInterval();
 			}
-			return mv;
 		}
+		return mv;
+		
 	}
 
 	// 소셜로그인 이후 메인페이지 이동

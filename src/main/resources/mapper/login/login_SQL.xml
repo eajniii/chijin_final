@@ -58,24 +58,13 @@
 	<select id="loginAction" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT 
-				MEMBER_ID,
-				MEMBER_PASSWD,
 				MEMBER_NO,
 				MEMBER_NAME,
-				MEMBER_PHONE,
-				MEMBER_EMAIL,
-				MEMBER_ZIPCODE,
-				MEMBER_ADDR1,
-				MEMBER_ADDR2,
 				MEMBER_GRADE,
-				MEMBER_DELETE,
-				TO_CHAR(MEMBER_BIRTH, 'YYYY/MM/DD') MEMBER_BIRTH
 			FROM 
 				MEMBER 
 			WHERE 
 				MEMBER_ID = #{MEMBER_ID}
-			AND 
-				MEMBER_PASSWD = #{MEMBER_PASSWD}
 		]]>
 	</select>
 	

@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import stu.common.common.CommandMap;
 import stu.shop.goods.GoodsService;
 
+
 @Controller
 public class MainController {
 
