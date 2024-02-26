@@ -1,5 +1,6 @@
 package stu.member.login;
 
+import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Random;
 
@@ -45,29 +46,40 @@ public class LoginController {
 		HttpSession session = request.getSession();
 
 		Map<String, Object> chk = loginService.loginAction(commandMap.getMap());
+		Map<String, Object> fnd = loginService.findID(commandMap.getMap());
 		
-		//case1. id, pw 틀려서 로그인 불가
-		if (chk==null) {
+		//case1. id 없음 -> id/비밀번호 불일치 메시지 보내기
+		if (fnd==null) {
 			mv.setViewName("login/loginForm");
 			mv.addObject("message", "해당 아이디 혹은 비밀번호가 일치하지 않습니다.");
-			
-			//일치하는 id가 있을 경우 MEMBER_LOGIN_COUNT값 증가시키기
-			loginService.loginCountUpdate(commandMap.getMap());
 		}
 		
-		else{
-			log.info("*********************************login_count: "+chk.get("MEMBER_LOGIN_COUNT"));
-			//case2. 로그인 불가 상황 - 로그인 시도 횟수 초과, 탈퇴한 회원
-			if(chk.get("MEMBER_DELETE").equals("1")) {
+		//case2. id 존재 
+		else {
+			BigDecimal loginCountBD = (BigDecimal) fnd.get("MEMBER_LOGIN_COUNT");
+			int loginCount = loginCountBD.intValue();
+			//case 2.1 삭제된 id
+			if(fnd.get("MEMBER_DELETE").equals("1")) {
 				mv.setViewName("login/loginForm");
-				mv.addObject("message", "탈퇴한 회원 입니다.");			
+				mv.addObject("message", "탈퇴한 회원 입니다.");		
 			}
-			else if (chk.get("MEMBER_LOGIN_COUNT").equals("4")) {
+			//case 2.2 로그인 시도 횟수 초과
+			else if(loginCount > 4) {
+				log.info("***********************************************************카운트 체크");
 				mv.setViewName("login/loginForm");
 				mv.addObject("message", "일일 로그인 시도 횟수(5회)를 초과하셨습니다.");
 			}
 			
-			//CASE3. 회원정보 일치
+			//case 2.3. id, pw 틀려서 로그인 불가
+			else if(chk==null) {
+				mv.setViewName("login/loginForm");
+				mv.addObject("message", "해당 아이디 혹은 비밀번호가 일치하지 않습니다.");
+				
+				//일치하는 id가 있을 경우 MEMBER_LOGIN_COUNT값 증가시키기
+				loginService.loginCountUpdate(commandMap.getMap());
+			}
+			
+			//case 2.4 로그인 성공
 			else {
 				session.setAttribute("SESSION_ID", chk.get("MEMBER_ID"));
 				session.setAttribute("SESSION_NO", chk.get("MEMBER_NO"));

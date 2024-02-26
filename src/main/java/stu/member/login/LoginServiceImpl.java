@@ -59,6 +59,12 @@ public class LoginServiceImpl implements LoginService {
 		return loginDAO.loginAction(map);
 	}
 	
+	// id 존재여부 찾기
+	@Override
+	public Map<String, Object> findID(Map<String, Object> map) throws Exception {
+		return loginDAO.findID(map);
+	}
+	
 	// 로그아웃
 	@Override
 	public Map<String, Object> logout(Map<String, Object> map) throws Exception {
@@ -70,12 +76,12 @@ public class LoginServiceImpl implements LoginService {
 	public void lastLogin(Object x) throws Exception {
 		loginDAO.lastLogin(x);
 	}
-	
-	
-	
-	
-	
-	
+
+	@Override
+	public void loginCountUpdate(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

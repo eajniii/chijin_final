@@ -80,6 +80,19 @@
 		]]>
 	</select>
 	
+	<!-- id 존재여부 확인 -->
+	<select id="findID" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT 
+				MEMBER_DELETE,
+				MEMBER_LOGIN_COUNT
+			FROM 
+				MEMBER 
+			WHERE 
+				MEMBER_ID = #{MEMBER_ID}
+		]]>
+	</select>
+	
 	<!-- 마지막 로그인 갱신 -->
 	<update id="lastLogin" parameterType="String">
 		UPDATE MEMBER SET MEMBER_LOG = SYSDATE WHERE MEMBER_NO = #{MEMBER_NO}

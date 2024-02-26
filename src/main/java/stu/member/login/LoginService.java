@@ -16,6 +16,8 @@ public interface LoginService {
 	
 	Map<String, Object> loginAction(Map<String, Object> map) throws Exception; // 로그인
 	
+	Map<String, Object> findID(Map<String, Object> map) throws Exception; //  id 존재여부 확인
+	
 	Map<String, Object> selectFindPw2(Map<String, Object> map) throws Exception; // 이메일 비밀번호 찾기
 	
 	Map<String, Object> selectFindId(Map<String, Object> map) throws Exception; // 이메일 아이디 찾기	
