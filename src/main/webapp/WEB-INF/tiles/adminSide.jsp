@@ -50,9 +50,6 @@
 			<%--					<b class="fa fa-dashboard">서버관리</b> --%>
 			<%--				</a></li>--%>
 
-			<li><a href="/checkPing.do" style="background: #e7e7e7; border-bottom: 1px solid #F8F8F8;">
-				<b class="fa fa-dashboard">서버관리</b> ⚙️
-			</a></li>
 
 			<li><a href="/main.do" style="background: #e7e7e7; border-bottom: 1px solid #F8F8F8;">
 				<b class="fa fa-dashboard">쇼핑몰로 이동</b>

@@ -153,6 +153,9 @@ public class GoodsController {
 	public ModelAndView openMainSearch(CommandMap commandMap,
 			@RequestParam(value = "keyword", defaultValue = "") String keyword, HttpServletRequest request) // 메인에서 검색시 리스트
 			throws Exception {
+		
+		//keyword = keyword.replace("--", "");
+		
 		ModelAndView mv = new ModelAndView("/shop/mainSearch");
 
 		request.setAttribute("keyword", keyword);
@@ -171,6 +174,8 @@ public class GoodsController {
 	public ModelAndView mainSearch(CommandMap commandMap,
 			@RequestParam(value = "keyword", defaultValue = "") String keyword, HttpServletRequest request) // 메인에서 검색시 리스트 제이슨
 			throws Exception {
+		
+		keyword = keyword.replace("--", "");
 
 		ModelAndView mv = new ModelAndView("jsonView");
 		List<Map<String, Object>> list = null;
