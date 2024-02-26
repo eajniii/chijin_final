@@ -27,7 +27,7 @@
 	
 	<!-- Listener -->
 	<listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
    
 	<servlet>
@@ -140,6 +140,7 @@
 		<error-code>505</error-code>
 		<location>/error/error.html</location>
 	</error-page>
+
 
 </web-app>
 

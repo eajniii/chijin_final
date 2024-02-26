@@ -32,7 +32,6 @@ public class JoinController {
 	@RequestMapping(value="/joinForm.do")
 	public ModelAndView joinForm(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("login/joinForm");
-
 		
 		return mv;
 	}
