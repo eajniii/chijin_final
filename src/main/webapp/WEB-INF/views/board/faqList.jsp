@@ -95,9 +95,12 @@ li {
    <input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
 
    <br />
+   
+   <!-- 글쓰기 버튼 -->
    <p id="wrapBtn" style="display: none;">
       <a href="#this" class="btn" id="write">글쓰기</a>
    </p>
+
 
    <form id="commonForm" name="commonForm"></form>
    <script type="text/javascript">
