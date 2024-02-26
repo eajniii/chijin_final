@@ -7,11 +7,25 @@ import java.util.UUID;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Safelist;
+import org.owasp.esapi.ESAPI;
 
 
 public class CommonUtils {
 	private static final Logger log = Logger.getLogger(CommonUtils.class);
 	
+	public static String stripXSS(String value) {
+		if (value!=null) {
+			value = ESAPI.encoder().canonicalize(value);
+			
+			value = value.replaceAll("\0", "");
+			
+			value = Jsoup.clean(value, Safelist.none());
+		
+		}
+		return value;
+	}
 	public static String getRandomString(){
 		return UUID.randomUUID().toString().replaceAll("-", "");
 	}

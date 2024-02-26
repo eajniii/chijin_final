@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -28,7 +29,7 @@ public class CommonController {
 	
 	@Resource(name="commonService")
 	private CommonService commonService;
-	
+
 	@RequestMapping(value="/common/downloadFile.do")
 	public void downloadFile(CommandMap commandMap, HttpServletResponse response) throws Exception{
 		Map<String,Object> map = commonService.selectFileInfo(commandMap.getMap());

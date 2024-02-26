@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import stu.common.common.CommandMap;
+import stu.common.common.XSSFilter;
 import stu.shop.basket.BasketDao;
 import stu.shop.basket.BasketService;
 import stu.shop.order.OrderDao;
@@ -31,6 +33,7 @@ public class GoodsController {
 
 	Logger log = Logger.getLogger(this.getClass()); // 로그
 
+	
 	@Resource(name = "goodsService")
 	private GoodsService goodsService;
 
@@ -73,6 +76,8 @@ public class GoodsController {
 			@RequestParam(value = "keyword", defaultValue = "") String keyword, HttpServletRequest request)  // 카테고리별 상품리스트
 			throws Exception {
 		ModelAndView mv = new ModelAndView("/shop/cateGoodsList");
+
+		
 		commandMap.put("cate", cate);
 		request.setAttribute("keyword", keyword);
 		System.out.println("카테고리 검색확인=" + commandMap.getMap());
