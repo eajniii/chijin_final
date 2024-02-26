@@ -113,6 +113,10 @@
 		<location>/error/error.html</location>
 	</error-page>
 	<error-page>
+		<error-code>500</error-code>
+		<location>/error/error.html</location>
+	</error-page>
+	<error-page>
 		<error-code>501</error-code>
 		<location>/error/error.html</location>
 	</error-page>
