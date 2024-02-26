@@ -63,7 +63,8 @@ h1 {
 			</tbody>
 		</table>
 	</form>
-
+	
+	
 	<p>
 		<a href="#this" class="btn" id="write">작성하기</a> <a href="#this"
 			class="btn" id="list">목록으로</a>
