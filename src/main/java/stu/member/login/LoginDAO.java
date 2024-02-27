@@ -49,11 +49,24 @@ public class LoginDAO extends AbstractDao {
 			return (Map<String, Object>)selectOne("login.loginAction", map);
 		}
 		
+		
+	// id 존재여부 확인
+		@SuppressWarnings("unchecked")
+		public Map<String, Object> findID(Map<String, Object> map) throws Exception {
+			return (Map<String, Object>)selectOne("login.findID", map);
+		}
+		
 	// 로그아웃
 		@SuppressWarnings("unchecked")
 		public Map<String, Object> logout(Map<String, Object> map) throws Exception {
 			return (Map<String, Object>)selectOne("login.logout", map);
 		}
+		
+	// 로그인 불일치 횟수 update
+		public void loginCountUpdate(Map<String, Object> map) throws Exception {
+			insert("login.loginCountUpdate",map);
+		}
+		
 		
 		
 	

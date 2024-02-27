@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
-              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
-              version="4.0">
-              
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	version="4.0">
+
 	<!-- 실행시 index.jsp로 처음실행 -->
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
-	</welcome-file-list> 
-	
+	</welcome-file-list>
+
 	<!-- Encoding UTF-8 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
@@ -20,17 +20,17 @@
 			<param-value>UTF-8</param-value>
 		</init-param>
 	</filter>
-	
+
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>*.do</url-pattern>
 	</filter-mapping>
-	
+
 	<!-- Listener -->
 	<listener>
-    	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-   
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
 	<servlet>
 		<servlet-name>action</servlet-name>
 		<servlet-class>
@@ -44,60 +44,60 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>action</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-     
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>classpath*:config/spring/context-*.xml</param-value>
-  	</context-param>
-  	
-  	<!-- 세션 시간 1시간 설정 -->
-  	<session-config>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath*:config/spring/context-*.xml</param-value>
+	</context-param>
+
+	<!-- 세션 시간 1시간 설정 -->
+	<session-config>
 		<session-timeout>60</session-timeout>
 	</session-config>
 
-  	<!-- 24.02.20 캐시 크기 설정 (7-4) -->
+	<!-- 24.02.20 캐시 크기 설정 (7-4) -->
 	<context-param>
-	    <param-name>cacheSize</param-name>
-	    <param-value>5000</param-value> <!-- 원하는 캐시 크기로 설정 -->
+		<param-name>cacheSize</param-name>
+		<param-value>5000</param-value> <!-- 원하는 캐시 크기로 설정 -->
 	</context-param>
- 	
- 	<!-- 24.02.20 header에 no-cache 설정 (7-4) -->
+
+	<!-- 24.02.20 header에 no-cache 설정 (7-4) -->
 	<filter>
-	    <filter-name>NoCacheFilter</filter-name>
-	    <filter-class>stu.common.common.NoCacheFilter</filter-class> 
+		<filter-name>NoCacheFilter</filter-name>
+		<filter-class>stu.common.common.NoCacheFilter</filter-class>
 	</filter>
 	<filter-mapping>
-	    <filter-name>NoCacheFilter</filter-name>
-	    <url-pattern>/*</url-pattern> 
+		<filter-name>NoCacheFilter</filter-name>
+		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
+
 	<!-- 24.02.22 xss 필터링 -->
-    <filter>
-        <filter-name>XSSFilter</filter-name>
-        <filter-class>stu.common.common.XSSFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>XSSFilter</filter-name>
-        <url-pattern>/*</url-pattern> 
-    </filter-mapping>
-    
-    
+	<filter>
+		<filter-name>XSSFilter</filter-name>
+		<filter-class>stu.common.common.XSSFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>XSSFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
 	<security-constraint>
-	  <display-name>Forbidden</display-name>
-	  <web-resource-collection>
-	    <web-resource-name>Protected Context</web-resource-name>
-	    <url-pattern>/*</url-pattern>
-	    <http-method>PUT</http-method>
-	    <http-method>DELETE</http-method>
-	    <http-method>TRACE</http-method>
-	    <http-method>CONNECT</http-method>
-	  </web-resource-collection>
-	  <auth-constraint></auth-constraint>
+		<display-name>Forbidden</display-name>
+		<web-resource-collection>
+			<web-resource-name>Protected Context</web-resource-name>
+			<url-pattern>/*</url-pattern>
+			<http-method>PUT</http-method>
+			<http-method>DELETE</http-method>
+			<http-method>TRACE</http-method>
+			<http-method>CONNECT</http-method>
+		</web-resource-collection>
+		<auth-constraint></auth-constraint>
 	</security-constraint>
 
 	<!-- 에러 페이지 설정 -->
@@ -123,6 +123,10 @@
 	</error-page>
 	<error-page>
 		<error-code>405</error-code>
+		<location>/error/error.html</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
 		<location>/error/error.html</location>
 	</error-page>
 	<error-page>
