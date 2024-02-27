@@ -1,41 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>에러 페이지</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</head>
-<body>
 
-<div class="jumbotron text-center">
-  <h1>ERROR!</h1>
-  <p></p>
-  <p>에러가 발생하였습니다!</p>
-  <p>사이트 재접속 후에도 문제가 해결되지 않는다면 아래 연락처로 문의 바랍니다</p> 
-</div>
-  
-<div class="container">
-  <div class="row">
-    <div class="col-sm-4">
-      <h3>☎️ Phone</h3>
-      <p>041-3356-1294</p>
-    </div>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>JM Collection :: 에러가 발생하였습니다.</title>
+    <link rel="stylesheet" type="text/css" href="/resources/css/err_170424.css" />
+    <script type=text/javascript>
+var defaultCharset = document.charset ;
+function isIE(){ return /msie/i.test(navigator.userAgent) && !/opera/i.test(navigator.userAgent); }
+function setDefaultCharset() { document.charset = defaultCharset ; }
+function emulAcceptCharset(form) { if (isIE) { var defCharset = document.charset ; document.charset = form.acceptCharset ; window.onbeforeunload = setDefaultCharset ; } return true; }
+</script>
+</head>
+
+<body>
+    <style>
+        a {
+            cursor: pointer;
+        }
+    </style>
     
-    <div class="col-sm-4">
-      <h3>📧 Email</h3>
-      <p>jm@jmcollection.com</p>
+    <div id="wrap">
+        <div id="header">
+            <h1><a href="http://43.201.165.138/"><img src="https://github.com/injaecode/chijin_final/assets/48276691/83605130-f5ee-4b5b-be85-ad5c42320fd2" alt="JM Collection" width="20%"/></a></h1>
+            <p class="menu">
+            	<a href="http://43.201.165.138/">JM Collection 홈</a>
+           	</p>
+           	<p>☎️ Phone: 041-3356-1294 | 📧 Email: jm@jmcollection.com | 📠 Fax: 012-345-6789@jmcollection</p>
+        </div>
+        <div id="container">
+            <h2>죄송합니다.<br />요청하신 페이지를 찾을 수 없습니다.</h2>
+            <div class="content">
+                <p>방문하시려는 페이지의 주소가 잘못 입력되었거나,<br />페이지의 주소가 변경 혹은 삭제되어 요청하신 페이지를 찾을 수 없습니다.</p>
+                <p>입력하신 주소가 정확한지 다시 한번 확인해 주시기 바랍니다.</p>
+                <p>관련 문의사항은 <a
+                        onclick="window.open('https://m.help.naver.com/support/alias/contents2/naverhome/notfoundm.naver', 'help_naver', 'left=40,top=60,width=650,height=800,toolbar=1,resizable=0'); return false;">네이버
+                        고객센터</a>에 알려주시면 친절하게 안내해 드리겠습니다.</p>
+                <p>감사합니다.</p>
+            </div>
+            <form class="search" style="margin-top:50px;" name="search" action="https://search.naver.com/search.naver"
+                method="get" onsubmit="emulAcceptCharset(this);" accept-charset="ks_c_5601-1987">
+                <input type="hidden" name="sm" value="nnf_hty">
+                <fieldset class="window02">
+                    <legend>검색</legend>
+                    <input type="text" title="검색" name="query" maxlength="255" value="" class="box_window"
+                        accesskey="s">
+                    <input src="https://s.pstatic.net/static/w8/err/btn_sch.gif"
+                        onmouseover="this.src='https://s.pstatic.net/static/w8/err/btn_sch_over.gif'"
+                        onmouseout="this.src='https://s.pstatic.net/static/w8/err/btn_sch.gif'" alt="검색" type="image"
+                        class="btn_window">
+                </fieldset>
+                <p class="sch_desc">네이버 검색으로 원하시는 페이지를 찾으실 수 있습니다.</p>
+            </form>
+        </div>
+        <div id="footer">
+            <address>
+                <a href="https://www.naver.com/" target="_blank" class="logo"><img
+                        src="https://s.pstatic.net/static/common/footer/logo_naver.gif" width="63" height="15"
+                        alt="NAVER"></a>
+                <em>Copyright &copy;</em>
+                <a href="https://www.navercorp.com/" target="_blank">NAVER Corp.</a>
+                <span>All Rights Reserved.</span>
+            </address>
+        </div>
     </div>
-    
-    <div class="col-sm-4">
-      <h3>📠 Fax</h3>
-      <p>012-345-6789@jmcollection</p>
-    </div>
-  </div>
-</div>
 
 </body>
+
 </html>
