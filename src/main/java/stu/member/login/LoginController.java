@@ -137,7 +137,6 @@ public class LoginController {
 		String subject = "<JM COLLECTION>" + user_name + "님, 아이디 찾기 결과 입니다.";
 		StringBuilder sb = new StringBuilder();
 		sb.append("귀하의 아이디는 " + user + " 입니다.");
-//		joinService.send(subject, sb.toString(), "1teampjt@gmail.com", email, null);
 		ra.addFlashAttribute("resultMsg", "귀하의 아이디는 " + user + " 입니다.");
 		ra.addFlashAttribute("isResult", "1");
 
@@ -172,7 +171,6 @@ public class LoginController {
 		String subject = "<JM COLLECTION>임시 비밀번호입니다.";
 		StringBuilder sb = new StringBuilder();
 		sb.append("귀하의 임시 비밀번호는 " + password + " 입니다. 로그인 후 패스워드를 변경해 주세요.");
-//		joinService.send(subject, sb.toString(), "1teampjt@gmail.com", email, null);
 		ra.addFlashAttribute("resultMsg", "귀하의 임시 비밀번호는 " + password + " 입니다.");
 		ra.addFlashAttribute("isResult", "1");
 
