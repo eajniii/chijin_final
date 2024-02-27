@@ -50,6 +50,7 @@ public class LoginController {
 		
 		//case1. id 없음 -> id/비밀번호 불일치 메시지 보내기
 		if (fnd==null) {
+			log.info("************************case1 id 없음");
 			mv.setViewName("login/loginForm");
 			mv.addObject("message", "해당 아이디 혹은 비밀번호가 일치하지 않습니다.");
 		}
