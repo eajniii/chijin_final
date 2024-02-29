@@ -10,13 +10,14 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
-
+import org.apache.log4j.Logger;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 public class XSSFilter implements Filter{
-
+	
+	private static final Logger LOGGER = Logger.getLogger(SecurityFilter.class);
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
