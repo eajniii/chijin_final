@@ -1,51 +1,81 @@
 package stu.common.common;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
- 
-public final class XSSRequestWrapper extends HttpServletRequestWrapper {
- 
-    public XSSRequestWrapper(HttpServletRequest request) {
-		super(request);
-		// TODO Auto-generated constructor stub
-	}
 
-    public String[] getParameterValues(String parameter) {
- 
-      String[] values = super.getParameterValues(parameter);
-      if (values==null)  {
-                  return null;
-          }
-      int count = values.length;
-      String[] encodedValues = new String[count];
-      for (int i = 0; i < count; i++) {
-                 encodedValues[i] = cleanXSS(values[i]);
-       }
-      return encodedValues;
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Safelist;
+
+import java.util.*;
+
+public class XSSRequestWrapper extends HttpServletRequestWrapper {
+    public XSSRequestWrapper(HttpServletRequest request) {
+        super(request);
     }
- 
-    public String getParameter(String parameter) {
-          String value = super.getParameter(parameter);
-          if (value == null) {
-                 return null;
-                  }
-          return cleanXSS(value);
+
+    @Override
+    public String getParameter(String name) {
+        String value = super.getParameter(name);
+        return filter(value);
     }
- 
-    public String getHeader(String name) {
-        String value = super.getHeader(name);
-        if (value == null)
+
+    @Override
+    public Map<String, String[]> getParameterMap() {
+        Map<String, String[]> paramMap = super.getParameterMap();
+        Map<String, String[]> filteredParamMap = new HashMap<>();
+        for (String key : paramMap.keySet()) {
+            String[] values = paramMap.get(key);
+            String[] filteredValues = new String[values.length];
+            for (int i = 0; i < values.length; i++) {
+                filteredValues[i] = filter(values[i]);
+            }
+            filteredParamMap.put(key, filteredValues);
+        }
+        return filteredParamMap;
+    }
+
+    @Override
+    public Enumeration<String> getParameterNames() {
+        return Collections.enumeration(getParameterMap().keySet());
+    }
+
+    @Override
+    public String[] getParameterValues(String name) {
+        String[] values = super.getParameterValues(name);
+        if (values == null) {
             return null;
-        return cleanXSS(value);
- 
+        }
+        String[] filteredValues = new String[values.length];
+        for (int i = 0; i < values.length; i++) {
+            filteredValues[i] = filter(values[i]);
+        }
+        return filteredValues;
     }
- 
-    private String cleanXSS(String value) {
-        value = value.replaceAll("<", "& lt;").replaceAll(">", "& gt;");
-        value = value.replaceAll("\\(", "& #40;").replaceAll("\\)", "& #41;");
-        value = value.replaceAll("'", "& #39;");
-        value = value.replaceAll("eval\\((.*)\\)", "");
-        value = value.replaceAll("[\\\"\\\'][\\s]*javascript:(.*)[\\\"\\\']", "\"\"");
-        value = value.replaceAll("script", "");
-        return value;
+
+    private String filter(String input) {
+        if (input != null) {
+            if (isSensitiveInput(input)) {
+                // 민감한 입력에 대한 엄격한 필터링
+                return strictFilter(input);
+            } else {
+                // 일반적인 입력에 대한 완화된 필터링
+                return relaxedFilter(input);
+            }
+        }
+        return input;
+    }
+
+    private boolean isSensitiveInput(String input) {
+        return input.contains("keyword");
+    }
+    
+    private String strictFilter(String value) {
+
+        value = value.replaceAll("\0", "");
+        return Jsoup.clean(value, Safelist.none());
+    }
+    
+    private String relaxedFilter(String value) {
+        value = value.replaceAll("\0", "");
+        return Jsoup.clean(value, Safelist.basic());
     }
 }
