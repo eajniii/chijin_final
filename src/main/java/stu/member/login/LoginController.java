@@ -47,7 +47,7 @@ public class LoginController {
 
 		Map<String, Object> chk = loginService.loginAction(commandMap.getMap());
 		Map<String, Object> fnd = loginService.findID(commandMap.getMap());
-		
+		log.info("************************************로그인 성공");
 		//case1. id 없음 -> id/비밀번호 불일치 메시지 보내기
 		if (fnd==null) {
 			log.info("************************case1 id 없음");

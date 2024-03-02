@@ -77,9 +77,10 @@ public class LoginServiceImpl implements LoginService {
 		loginDAO.lastLogin(x);
 	}
 
+	//id 카운트 업데이트
 	@Override
 	public void loginCountUpdate(Map<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
+		loginDAO.loginCountUpdate(map);
 		
 	}
 	

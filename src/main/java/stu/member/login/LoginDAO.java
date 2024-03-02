@@ -66,8 +66,5 @@ public class LoginDAO extends AbstractDao {
 		public void loginCountUpdate(Map<String, Object> map) throws Exception {
 			insert("login.loginCountUpdate",map);
 		}
-		
-		
-		
 	
 }
